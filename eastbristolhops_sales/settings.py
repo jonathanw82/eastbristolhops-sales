@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "whi2v(dg&wq2wg9#2cad^kubrofb4j@kmoo-fz8&$co6433m+o"
+SECRET_KEY = os.environ.get('APM_SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
@@ -41,24 +41,26 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
 
+    # custom apps
+    'custom_apps.basket.apps.BasketConfig',
+    'custom_apps.catalogue.apps.CatalogueConfig',
+    'custom_apps.checkout.apps.CheckoutConfig',
+    'custom_apps.dashboard.apps.DashboardConfig',
+    'custom_apps.offer.apps.OfferConfig',
+    'custom_apps.order.apps.OrderConfig',
+    'custom_apps.partner.apps.PartnerConfig',
+    'custom_apps.shipping.apps.ShippingConfig',
+
     'oscar.config.Shop',
     'oscar.apps.analytics.apps.AnalyticsConfig',
-    'oscar.apps.checkout.apps.CheckoutConfig',
     'oscar.apps.address.apps.AddressConfig',
-    'oscar.apps.shipping.apps.ShippingConfig',
-    'oscar.apps.catalogue.apps.CatalogueConfig',
     'oscar.apps.catalogue.reviews.apps.CatalogueReviewsConfig',
     'oscar.apps.communication.apps.CommunicationConfig',
-    'oscar.apps.partner.apps.PartnerConfig',
-    'oscar.apps.basket.apps.BasketConfig',
     'oscar.apps.payment.apps.PaymentConfig',
-    'oscar.apps.offer.apps.OfferConfig',
-    'oscar.apps.order.apps.OrderConfig',
     'oscar.apps.customer.apps.CustomerConfig',
     'oscar.apps.search.apps.SearchConfig',
     'oscar.apps.voucher.apps.VoucherConfig',
     'oscar.apps.wishlists.apps.WishlistsConfig',
-    'oscar.apps.dashboard.apps.DashboardConfig',
     'oscar.apps.dashboard.reports.apps.ReportsDashboardConfig',
     'oscar.apps.dashboard.users.apps.UsersDashboardConfig',
     'oscar.apps.dashboard.orders.apps.OrdersDashboardConfig',
@@ -105,7 +107,9 @@ ROOT_URLCONF = "eastbristolhops_sales.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [ 
+            os.path.join(BASE_DIR, 'templates')
+            ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
