@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import dj_database_url
 from oscar.defaults import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -26,7 +27,7 @@ SECRET_KEY = os.environ.get('APM_SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['eastbristolhops-sales.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -80,6 +81,7 @@ INSTALLED_APPS = [
     'treebeard',
     'sorl.thumbnail',   # Default thumbnail backend, can be replaced
     'django_tables2',
+    'storages',
 ]
 
 SITE_ID = 1
