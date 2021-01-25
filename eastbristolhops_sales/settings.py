@@ -82,6 +82,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',   # Default thumbnail backend, can be replaced
     'django_tables2',
     'storages',
+    'paypal',
 ]
 
 SITE_ID = 1
@@ -172,10 +173,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-OSCAR_SHOP_NAME = 'East Bristol Hops'
-OSCAR_FROM_EMAIL = 'admin@eastbristolhops.co.uk'
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -193,6 +190,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+OSCAR_SHOP_NAME = 'East Bristol Hops'
+OSCAR_FROM_EMAIL = 'admin@eastbristolhops.co.uk'
+
 OSCAR_INITIAL_ORDER_STATUS = 'Pending'
 OSCAR_INITIAL_LINE_STATUS = 'Pending'
 OSCAR_ORDER_STATUS_PIPELINE = {
@@ -202,8 +202,20 @@ OSCAR_ORDER_STATUS_PIPELINE = {
     'Cancelled': (),
 }
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
+OSCAR_ALLOW_ANON_CHECKOUT = True
+OSCAR_ALLOW_ANON_REVIEWS = False
+
+OSCAR_DASHBOARD_NAVIGATION.append(
+    {
+        'label': _('PayPal'),
+        'icon': 'icon-globe',
+        'children': [
+            {
+                'label': _('Express transactions'),
+                'url_name': 'paypal-express-list',
+            },
+        ]
+    })
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
@@ -225,6 +237,11 @@ if 'USE_AWS' in os.environ:
     MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
     # INTERNAL DJANGO SETTING --> Where should it stores files
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    PAYPAL_API_USERNAME = os.environ.get('PAYPAL_API_USERNAME', '')
+    PAYPAL_API_PASSWORD = os.environ.get('PAYPAL_API_PASSWORD', '')
+    PAYPAL_API_SIGNATURE = os.environ.get('PAYPAL_API_SIGNATURE', '')
+
+
 
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
