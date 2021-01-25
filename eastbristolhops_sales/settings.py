@@ -172,6 +172,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+OSCAR_SHOP_NAME = 'East Bristol Hops'
+OSCAR_FROM_EMAIL = 'admin@eastbristolhops.co.uk'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -190,6 +193,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+OSCAR_INITIAL_ORDER_STATUS = 'Pending'
+OSCAR_INITIAL_LINE_STATUS = 'Pending'
+OSCAR_ORDER_STATUS_PIPELINE = {
+    'Pending': ('Packaged', 'Cancelled',),
+    'Packaged': ('Dispatched', 'Cancelled',),
+    'Dispatched': (),
+    'Cancelled': (),
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/

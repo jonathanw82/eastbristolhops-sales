@@ -33,7 +33,7 @@
 
     <body id="{% block body_id %}default{% endblock %}" class="{% block body_class %}default{% endblock %}">
         {# Main content goes in this 'layout' block #}
-        {% block newheading %}
+        <div class="wrapper">
         <div class="row new-header-box">
             <div class="col-sm-12 header-content">
                 <a href="http://www.eastbristolhops.co.uk/"><img class="hop"
@@ -44,8 +44,7 @@
                 src="{% static 'oscar/img/hopright.png' %}" alt="logo"></a>
             </div>
         </div>
-        {% endblock %}
-    
+    </div>
         
         {% block layout %}{% endblock %}
 

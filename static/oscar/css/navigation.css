@@ -1,6 +1,17 @@
+.wrapper{
+    width: 100%!important;
+}
+
+body{
+    margin-bottom: 50px;
+}
 
 #logonavbar{
     text-align: center!important;
+}
+
+.show-in-mobile{
+    display: none;
 }
 
 .new-header-box{
@@ -12,6 +23,28 @@
 
 .test{
     text-align: center!important;
+}
+
+.test1{
+    text-align: center!important;
+    margin-top: 10px;
+    font-size: 1.8rem;
+    width: 100%;
+}
+.mobile-links{
+    text-align: center!important;
+    margin-top: 10px;
+    font-size: 1.8rem;
+}
+
+.mobile-links a{
+    color: black;
+    padding-right: 10px;
+}
+
+.test1 a{
+    color: black;
+    padding-right: 10px;
 }
 
 .header-content{
@@ -50,6 +83,15 @@
     .hop{
         display: none;
     }
+    .test1{
+        margin-bottom: 0%;
+    }
+    .show-in-mobile{
+        display:block;
+    }
+    body{
+        margin-bottom: 40px;
+    }
 }    
    
 @media only screen and (max-width: 375px){
@@ -57,6 +99,13 @@
 }    
 
 @media only screen and (max-width: 320px){
-
+    .mobile-links{
+        font-size: 1.6rem;
+    }
+    .ebhlogo{
+        width: 250px;
+        height: auto;
+        padding-top: 15px;
+    }
    
 }  

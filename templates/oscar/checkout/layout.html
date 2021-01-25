@@ -1,14 +1,15 @@
 {% extends "oscar/layout.html" %}
 {% load i18n %}
 {% load category_tags %}
+{% load static %}
 
 {% block layout %}
 
     <header class="header container-fluid">
         <div class="page_inner">
-            <div class="row">
+            <!-- <div class="row">
                 {% include "oscar/partials/brand.html" %}
-            </div><!-- /row -->
+            </div> -->
         </div>
         {% block checkout_nav %}{% endblock %}
     </header><!-- /header -->
