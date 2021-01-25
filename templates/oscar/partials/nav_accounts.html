@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load static %}
 
 <div id="top_page" class="navbar navbar-default navbar-static-top accounts">
     {# This is used in mobile view #}
@@ -12,26 +13,7 @@
 
     <div class="navbar-collapse account-collapse collapse">
         <div class="container-fluid">
-            {% block nav_account_languages %}
-            {% if LANGUAGES|length > 1 %}
-                <form id="language_selector" class="navbar-left navbar-form" action="{% url 'set_language' %}" method="post">
-                    {% csrf_token %}
-                    <input name="next" type="hidden" value="{{ language_neutral_url_path }}" />
-                    <div class="form-group">
-                        <select name="language" class="form-control">
-                            {% get_language_info_list for LANGUAGES as languages %}
-                            {% for language in languages %}
-                                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE%} selected="selected"{% endif %}>
-                                    {{ language.name_local }}
-                                </option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <button class="btn btn-default" type="submit" data-loading-text="{% trans 'Submitting...' %}">{% trans "Go" %}</button>
-                </form>
-            {% endif %}
-            {% endblock %}
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav">
                 {% if user.is_authenticated %}
                 {% block nav_account_navbar_authenticated %}
                     <li>
@@ -54,6 +36,11 @@
                 {% else %}
                     <li><a id="login_link" href="{% url 'customer:login' %}"><i class="icon-signin"></i> {% trans "Login or register" %}</a></li>
                 {% endif %}
+                {% block mini_basket %}
+                <li class="basket-on-top pull-right">
+                {% include "oscar/partials/mini_basket.html" %}
+                </li>
+                {% endblock %}
             </ul>
         </div>
     </div>

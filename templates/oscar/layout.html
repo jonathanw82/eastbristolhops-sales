@@ -12,6 +12,7 @@
     {% else %}
         <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css" %}" />
     {% endif %}
+   
 {% endblock %}
 
 {% block layout %}
@@ -20,13 +21,13 @@
 
     {# Site logo/title, mini-basket, browse dropdown and searchbox #}
     <header class="header container-fluid">
-        <div class="page_inner">
+        <!-- <div class="page_inner">
             <div class="row">
                 {% include "oscar/partials/brand.html" %}
                 {# Mini-basket wrapped in a block so some templates can now display it #}
-                {% block mini_basket %}{% include "oscar/partials/mini_basket.html" %}{% endblock %}
+               
             </div>
-        </div>
+        </div> -->
         {% block navigation %}
             {% include "oscar/partials/nav_primary.html" %}
         {% endblock %}
@@ -54,7 +55,7 @@
         </div>
     {% endblock %}
 
-    {% include "oscar/partials/footer.html" %}
+   
 {% endblock %}
 
 {% block cdn_scripts %}

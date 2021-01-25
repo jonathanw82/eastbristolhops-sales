@@ -1,0 +1,62 @@
+
+#logonavbar{
+    text-align: center!important;
+}
+
+.new-header-box{
+    background-color: black;
+    width: 100%;
+    text-align: center;
+    height: 80px;
+}
+
+.test{
+    text-align: center!important;
+}
+
+.header-content{
+    margin-top: 7px;
+}
+
+.navspaceright{
+    margin-left: 20px;
+}
+
+.navspaceleft{
+    margin-right: 20px;
+}
+
+.ebhlogo{
+    width: 300px;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 8px;
+}
+
+.hop{
+    width: 80px;
+    height: auto;
+    padding-top: 15px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 10px;
+}
+
+.basket-in-navbar{
+    padding-top: 10px;
+}
+
+@media only screen and (max-width: 425px){
+    .hop{
+        display: none;
+    }
+}    
+   
+@media only screen and (max-width: 375px){
+
+}    
+
+@media only screen and (max-width: 320px){
+
+   
+}  
