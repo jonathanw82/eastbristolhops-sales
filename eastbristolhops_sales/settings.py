@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import dj_database_url
 from oscar.defaults import *
+from django.utils.translation import ugettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'whitenoise.runserver_nostatic',
 
     # custom apps
     'custom_apps.basket.apps.BasketConfig',
@@ -237,15 +239,18 @@ if 'USE_AWS' in os.environ:
     MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
     # INTERNAL DJANGO SETTING --> Where should it stores files
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    PAYPAL_API_USERNAME = os.environ.get('PAYPAL_API_USERNAME', '')
-    PAYPAL_API_PASSWORD = os.environ.get('PAYPAL_API_PASSWORD', '')
-    PAYPAL_API_SIGNATURE = os.environ.get('PAYPAL_API_SIGNATURE', '')
 
+
+PAYPAL_API_USERNAME = os.environ.get('PAYPAL_API_USERNAME', '')
+PAYPAL_API_PASSWORD = os.environ.get('PAYPAL_API_PASSWORD', '')
+PAYPAL_API_SIGNATURE = os.environ.get('PAYPAL_API_SIGNATURE', '')
 
 
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'admin@eastbristolhops.co.uk'
+    PAYPAL_SANDBOX_MODE = 'PAYPAL_SANDBOX_MODE', True
+    PAYPAL_CALLBACK_HTTPS = 'PAYPAL_CALLBACK_HTTPS', True
 #else:
     # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     # EMAIL_USE_TLS = True

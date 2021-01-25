@@ -1,0 +1,111 @@
+.wrapper{
+    width: 100%!important;
+}
+
+body{
+    margin-bottom: 50px;
+}
+
+#logonavbar{
+    text-align: center!important;
+}
+
+.show-in-mobile{
+    display: none;
+}
+
+.new-header-box{
+    background-color: black;
+    width: 100%;
+    text-align: center;
+    height: 80px;
+}
+
+.test{
+    text-align: center!important;
+}
+
+.test1{
+    text-align: center!important;
+    margin-top: 10px;
+    font-size: 1.8rem;
+    width: 100%;
+}
+.mobile-links{
+    text-align: center!important;
+    margin-top: 10px;
+    font-size: 1.8rem;
+}
+
+.mobile-links a{
+    color: black;
+    padding-right: 10px;
+}
+
+.test1 a{
+    color: black;
+    padding-right: 10px;
+}
+
+.header-content{
+    margin-top: 7px;
+}
+
+.navspaceright{
+    margin-left: 20px;
+}
+
+.navspaceleft{
+    margin-right: 20px;
+}
+
+.ebhlogo{
+    width: 300px;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 8px;
+}
+
+.hop{
+    width: 80px;
+    height: auto;
+    padding-top: 15px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 10px;
+}
+
+.basket-in-navbar{
+    padding-top: 10px;
+}
+
+@media only screen and (max-width: 425px){
+    .hop{
+        display: none;
+    }
+    .test1{
+        margin-bottom: 0%;
+    }
+    .show-in-mobile{
+        display:block;
+    }
+    body{
+        margin-bottom: 40px;
+    }
+}    
+   
+@media only screen and (max-width: 375px){
+
+}    
+
+@media only screen and (max-width: 320px){
+    .mobile-links{
+        font-size: 1.6rem;
+    }
+    .ebhlogo{
+        width: 250px;
+        height: auto;
+        padding-top: 15px;
+    }
+   
+}  
