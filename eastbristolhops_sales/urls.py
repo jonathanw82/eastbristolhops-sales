@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.apps import apps
 from django.conf import settings
 from django.conf.urls.static import static
-#from paypal.express.dashboard.app import application
+
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
@@ -31,4 +31,3 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
-   

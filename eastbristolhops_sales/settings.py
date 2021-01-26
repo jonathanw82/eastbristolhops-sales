@@ -26,8 +26,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('APM_SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
-
+# DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = True
 ALLOWED_HOSTS = ['eastbristolhops-sales.herokuapp.com','127.0.0.1']
 
 
@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'django.contrib.sites',
     'django.contrib.flatpages',
-    'whitenoise.runserver_nostatic',
 
     # custom apps
     'custom_apps.basket.apps.BasketConfig',
@@ -100,6 +99,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'oscar.apps.basket.middleware.BasketMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 AUTHENTICATION_BACKENDS = (
@@ -207,17 +207,17 @@ OSCAR_ORDER_STATUS_PIPELINE = {
 OSCAR_ALLOW_ANON_CHECKOUT = True
 OSCAR_ALLOW_ANON_REVIEWS = False
 
-OSCAR_DASHBOARD_NAVIGATION.append(
-    {
-        'label': _('PayPal'),
-        'icon': 'icon-globe',
-        'children': [
-            {
-                'label': _('Express transactions'),
-                'url_name': 'paypal-express-list',
-            },
-        ]
-    })
+# OSCAR_DASHBOARD_NAVIGATION.append(
+#     {
+#         'label': _('PayPal'),
+#         'icon': 'icon-globe',
+#         'children': [
+#             {
+#                 'label': _('Express transactions'),
+#                 'url_name': 'paypal-express-list',
+#             },
+#         ]
+#     })
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
@@ -245,12 +245,14 @@ PAYPAL_API_USERNAME = os.environ.get('PAYPAL_API_USERNAME', '')
 PAYPAL_API_PASSWORD = os.environ.get('PAYPAL_API_PASSWORD', '')
 PAYPAL_API_SIGNATURE = os.environ.get('PAYPAL_API_SIGNATURE', '')
 
+PAYPAL_CALLBACK_HTTPS = 'PAYPAL_CALLBACK_HTTPS', True
+PAYPAL_SANDBOX_MODE = 'PAYPAL_SANDBOX_MODE', True
 
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'admin@eastbristolhops.co.uk'
-    PAYPAL_SANDBOX_MODE = 'PAYPAL_SANDBOX_MODE', True
-    PAYPAL_CALLBACK_HTTPS = 'PAYPAL_CALLBACK_HTTPS', True
+    
+    
 #else:
     # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     # EMAIL_USE_TLS = True
