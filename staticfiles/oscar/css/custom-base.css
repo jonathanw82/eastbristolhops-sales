@@ -1,0 +1,10 @@
+body{
+    /* margin-bottom: 0px!important; */
+    margin: 0;
+    position: relative;
+    min-height: 100%;
+}
+
+.page_inner{
+    margin-bottom: 50px;
+}
