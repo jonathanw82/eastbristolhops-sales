@@ -195,7 +195,7 @@ USE_L10N = True
 USE_TZ = True
 
 OSCAR_SHOP_NAME = 'East Bristol Hops'
-OSCAR_FROM_EMAIL = 'jonwhewaycodetest@gmail.com'
+OSCAR_FROM_EMAIL = 'noreply@eastbristolhops-sales'
 
 OSCAR_INITIAL_ORDER_STATUS = 'Pending'
 OSCAR_INITIAL_LINE_STATUS = 'Pending'
@@ -255,7 +255,7 @@ PAYPAL_SANDBOX_MODE = 'PAYPAL_SANDBOX_MODE', True
 if 'DEVELOPMENT' in os.environ:
     # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     # DEFAULT_FROM_EMAIL = 'admin@eastbristolhops.co.uk'
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
     EMAIL_PORT = 587
     EMAIL_HOST = 'smtp.gmail.com'
@@ -263,7 +263,6 @@ if 'DEVELOPMENT' in os.environ:
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS_DEV')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER_DEV')
 else:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
     EMAIL_PORT = 587
     EMAIL_HOST = 'smtp.gmail.com'
