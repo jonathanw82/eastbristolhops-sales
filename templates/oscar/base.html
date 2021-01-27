@@ -21,9 +21,12 @@
         {% block extrastyles %}
         <link rel="stylesheet" type="text/css" href="{% static "oscar/css/footer.css" %}" />
         <link rel="stylesheet" type="text/css" href="{% static "oscar/css/navigation.css" %}" />
+        <link rel="stylesheet" type="text/css" href="{% static "oscar/css/custom-base.css" %}" />
         {% endblock %}
 
-        {% block extrahead %}{% endblock %}
+        {% block extrahead %}
+       
+        {% endblock %}
 
         {% block tracking %}
             {# Default to using Google analytics #}
@@ -32,24 +35,26 @@
     </head>
 
     <body id="{% block body_id %}default{% endblock %}" class="{% block body_class %}default{% endblock %}">
-        {# Main content goes in this 'layout' block #}
-        <div class="wrapper">
-        <div class="row new-header-box">
-            <div class="col-sm-12 header-content">
-                <a href="http://www.eastbristolhops.co.uk/"><img class="hop"
-                src="{% static 'oscar/img/hopleft.png' %}" alt="logo"></a> 
-                <a href="http://www.eastbristolhops.co.uk/"><img class="ebhlogo"
-                src="{% static 'oscar/img/ebhnavheader.png' %}" alt="logo"></a>
-                <a href="http://www.eastbristolhops.co.uk/"><img class="hop"
-                src="{% static 'oscar/img/hopright.png' %}" alt="logo"></a>
-            </div>
-        </div>
-    </div>
         
-        {% block layout %}{% endblock %}
-
-        {% block footer %}
-        <footer>
+        <div class="wrapper">
+            <div class="new-header-box">
+                <div class="col-sm-12 header-content">
+                    <a href="http://www.eastbristolhops.co.uk/"><img class="hop"
+                        src="{% static 'oscar/img/hopleft.png' %}" alt="logo"></a> 
+                        <a href="http://www.eastbristolhops.co.uk/"><img class="ebhlogo"
+                            src="{% static 'oscar/img/ebhnavheader.png' %}" alt="logo"></a>
+                            <a href="http://www.eastbristolhops.co.uk/"><img class="hop"
+                                src="{% static 'oscar/img/hopright.png' %}" alt="logo"></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+        {# Main content goes in this 'layout' block #}
+        {% block layout %}
+        {% endblock %}
+        
+       
+        <footer id="footer">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-sm-12">
@@ -65,7 +70,8 @@
               </div>
             </div>
           </footer>
-        {% endblock %}
+        
+       
 
         {# Scripts loaded from a CDN. #}
         {% block cdn_scripts %}
@@ -79,7 +85,10 @@
         {% endblock %}
 
         {# Additional JS scripts #}
-        {% block extrascripts %}{% endblock %}
+        {% block extrascripts %}
+    
+     
+        {% endblock %}
 
         {# Block for body onload functions #}
         <script>
