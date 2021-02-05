@@ -26,8 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('APM_SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
-
+DEBUG = bool(os.environ.get('DEVELOPMENT', False))
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -295,7 +294,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_URL = '/media/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if 'USE_AWS' in os.environ:
@@ -310,6 +309,8 @@ if 'USE_AWS' in os.environ:
     MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
     # INTERNAL DJANGO SETTING --> Where should it stores files
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+else:
+    MEDIA_URL = '/media/'
 
 
 PAYPAL_API_USERNAME = os.environ.get('PAYPAL_API_USERNAME', '')
@@ -320,8 +321,7 @@ PAYPAL_CALLBACK_HTTPS = 'PAYPAL_CALLBACK_HTTPS', True
 PAYPAL_SANDBOX_MODE = 'PAYPAL_SANDBOX_MODE', True
 
 
-
-if 'DEVELOPMENT' in os.environ:
+if bool(os.environ.get('DEVELOPMENT', False)):
     EMAIL_USE_TLS = True
     EMAIL_PORT = 587
     EMAIL_HOST = 'smtp.gmail.com'
@@ -335,3 +335,6 @@ else:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+
+SERVER_EMAIL = 'root@eastbristolhops-sales.herokuapp.com'
+ADMINS = [('Jon Wheway', 'jonwhewaycodetest@gmail.com'),]
