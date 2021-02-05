@@ -263,7 +263,7 @@ USE_L10N = True
 USE_TZ = True
 
 OSCAR_SHOP_NAME = 'East Bristol Hops'
-OSCAR_FROM_EMAIL = 'noreply@eastbristolhops-sales'
+OSCAR_FROM_EMAIL = 'jonwhewaycodetest@gmail.com'
 
 OSCAR_INITIAL_ORDER_STATUS = 'Pending'
 OSCAR_INITIAL_LINE_STATUS = 'Pending'
