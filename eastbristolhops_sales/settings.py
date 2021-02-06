@@ -26,8 +26,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('APM_SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get('DEVELOPMENT', False))
-
+# DEBUG = bool(os.environ.get('DEVELOPMENT', False))
+DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'eastbristolhops-sales.herokuapp.com',
@@ -317,8 +317,8 @@ PAYPAL_API_USERNAME = os.environ.get('PAYPAL_API_USERNAME', '')
 PAYPAL_API_PASSWORD = os.environ.get('PAYPAL_API_PASSWORD', '')
 PAYPAL_API_SIGNATURE = os.environ.get('PAYPAL_API_SIGNATURE', '')
 
-PAYPAL_CALLBACK_HTTPS = 'PAYPAL_CALLBACK_HTTPS', True
-PAYPAL_SANDBOX_MODE = 'PAYPAL_SANDBOX_MODE', True
+PAYPAL_SANDBOX_MODE = bool(os.environ.get('PAYPAL_SANDBOX_MODE', True))
+PAYPAL_CALLBACK_HTTPS = bool(os.environ.get('PAYPAL_CALLBACK_HTTPS', True))
 
 
 if bool(os.environ.get('DEVELOPMENT', False)):
@@ -328,6 +328,7 @@ if bool(os.environ.get('DEVELOPMENT', False)):
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER_DEV')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS_DEV')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER_DEV')
+    print('In Development')
 else:
     EMAIL_USE_TLS = True
     EMAIL_PORT = 587
@@ -335,6 +336,4 @@ else:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
-
-SERVER_EMAIL = 'root@eastbristolhops-sales.herokuapp.com'
-ADMINS = [('Jon Wheway', 'jonwhewaycodetest@gmail.com'),]
+    print('Im Production')
