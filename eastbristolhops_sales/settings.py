@@ -15,6 +15,10 @@ import dj_database_url
 from oscar.defaults import *
 from django.utils.translation import ugettext_lazy as _
 
+def bool_env(name, default=False):
+    value = os.environ.get(name, default)
+    return False if value in ['False', 'false'] else bool(value)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -26,8 +30,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('APM_SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = bool(os.environ.get('DEVELOPMENT', False))
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
+
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'eastbristolhops-sales.herokuapp.com',
@@ -317,11 +321,11 @@ PAYPAL_API_USERNAME = os.environ.get('PAYPAL_API_USERNAME', '')
 PAYPAL_API_PASSWORD = os.environ.get('PAYPAL_API_PASSWORD', '')
 PAYPAL_API_SIGNATURE = os.environ.get('PAYPAL_API_SIGNATURE', '')
 
-PAYPAL_SANDBOX_MODE = bool(os.environ.get('PAYPAL_SANDBOX_MODE', True))
-PAYPAL_CALLBACK_HTTPS = bool(os.environ.get('PAYPAL_CALLBACK_HTTPS', True))
+PAYPAL_SANDBOX_MODE = bool_env('PAYPAL_SANDBOX_MODE', True)
+PAYPAL_CALLBACK_HTTPS = bool_env('PAYPAL_CALLBACK_HTTPS', True)
 
 
-if bool(os.environ.get('DEVELOPMENT', False)):
+if 'DEVELOPMENT' in os.environ:
     EMAIL_USE_TLS = True
     EMAIL_PORT = 587
     EMAIL_HOST = 'smtp.gmail.com'
