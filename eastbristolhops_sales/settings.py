@@ -267,7 +267,7 @@ USE_L10N = True
 USE_TZ = True
 
 OSCAR_SHOP_NAME = 'East Bristol Hops'
-OSCAR_FROM_EMAIL = 'jonwhewaycodetest@gmail.com'
+OSCAR_FROM_EMAIL = 'noreply@eastbristolhops-sales.com'
 
 OSCAR_INITIAL_ORDER_STATUS = 'Pending'
 OSCAR_INITIAL_LINE_STATUS = 'Pending'
@@ -332,12 +332,13 @@ if 'DEVELOPMENT' in os.environ:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER_DEV')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS_DEV')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER_DEV')
-    print('In Development')
 else:
     EMAIL_USE_TLS = True
     EMAIL_PORT = 587
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
-    print('Im Production')
+
+SERVER_EMAIL = 'jonwhewaycode@outlook.com'
+ADMINS = [('Jon Wheway', 'jonwhewaycode@outlook.com'),]
