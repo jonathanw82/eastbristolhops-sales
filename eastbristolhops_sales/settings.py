@@ -62,6 +62,11 @@ INSTALLED_APPS = [
     'custom_apps.partner.apps.PartnerConfig',
     'custom_apps.shipping.apps.ShippingConfig',
 
+    # Sand box
+
+    'paypal.express.dashboard.apps.ExpressDashboardApplication',
+    # 'paypal.express_checkout.dashboard.apps.ExpressCheckoutDashboardApplication',
+
     'oscar.config.Shop',
     'oscar.apps.analytics.apps.AnalyticsConfig',
     'oscar.apps.address.apps.AddressConfig',
@@ -281,17 +286,27 @@ OSCAR_ORDER_STATUS_PIPELINE = {
 OSCAR_ALLOW_ANON_CHECKOUT = True
 OSCAR_ALLOW_ANON_REVIEWS = False
 
-# OSCAR_DASHBOARD_NAVIGATION.append(
-#     {
-#         'label': _('PayPal'),
-#         'icon': 'icon-globe',
-#         'children': [
-#             {
-#                 # 'label': _('Express transactions'),
-#                 # 'url_name': 'paypal-express-list',
-#             },
-#         ]
-#     })
+OSCAR_DASHBOARD_NAVIGATION +=[
+    {
+      'label': _('Shipping'),
+      'icon': 'fas fa-shipping-fast',
+      'children': [
+            {
+                'label': 'Shipping',
+                'url_name': 'dashboard:shipping-method-list',
+            },
+        ]},
+    {
+        'label': _('PayPal'),
+        'icon': 'fab fa-paypal',
+        'children': [
+            {
+                'label': _('Express transactions'),
+                'url_name': 'express_dashboard:paypal-express-list',
+            },
+        ]
+    }]
+
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )

@@ -19,12 +19,14 @@ from django.contrib import admin
 from django.apps import apps
 from django.conf import settings
 from django.conf.urls.static import static
+# from paypal.express.dashboard.app import application
 
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
     path('checkout/paypal/', include('paypal.express.urls')),
+    path('dashboard/paypal/express/', apps.get_app_config("express_dashboard").urls),
     path('', include(apps.get_app_config('oscar').urls[0])),
 ]
 
